@@ -2,9 +2,10 @@
 :root{
   --bg:#0b0d10; --bg2:#101318; --card:#14181e; --line:rgba(212,169,74,.22);
   --gold:#d4a94a; --gold2:#f3dc9a; --gold3:#8a6420; --ink:#e9e4d8; --mute:#a39d90; --snow:#e9edf2;
-  --serif:"Noto Serif SC","Noto Serif CJK SC","Songti SC",serif;
-  --brush:"Ma Shan Zheng","Noto Serif SC",serif;
-  --sans:"Noto Sans SC","Noto Sans CJK SC","PingFang SC",system-ui,sans-serif;
+  /* 中文字体回退：Google Fonts 无法加载（如国内网络）时使用系统宋体 / 楷体 / 黑体 */
+  --serif:"Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","Songti SC","STSong","SimSun",serif;
+  --brush:"Ma Shan Zheng","STKaiti","KaiTi","Kaiti SC","BiauKai","Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif;
+  --sans:"Noto Sans SC","Source Han Sans SC","Noto Sans CJK SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
   --en:"Cormorant Garamond",Georgia,serif;
   --w:1160px; --nav:68px;
 }
@@ -52,20 +53,22 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:.06em}
   background:radial-gradient(ellipse at 50% 30%,#18202b 0%,var(--bg) 65%)}
 .hero-art,.snow{position:absolute;inset:0;width:100%;height:100%}
 .snow{pointer-events:none}
-.ridge{fill:none;stroke-linejoin:round;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 3.2s ease forwards}
+.ridge{fill:none;stroke-linejoin:round;stroke-dasharray:2400;animation:draw 3.2s ease both}
 .r3{stroke:rgba(233,237,242,.18);stroke-width:1}
 .r2{stroke:rgba(233,237,242,.32);stroke-width:1.2;animation-delay:.3s}
 .r1{stroke:rgba(212,169,74,.55);stroke-width:1.4;animation-delay:.6s}
-.snowcap{fill:rgba(233,237,242,.5);opacity:0;animation:fade 1.5s 2.4s forwards}
-.moon{stroke-dasharray:760;stroke-dashoffset:760;animation:draw 3s .4s ease forwards}
+.snowcap{fill:rgba(233,237,242,.5);animation:fade 1.5s 2.4s both}
+.moon{stroke-dasharray:760;animation:draw3 3s .4s ease both}
 .needle-wrap{transform:translate(330px,-30px)}
-.needle{transform:translateY(-60px);opacity:0;animation:needleIn 2s 1s cubic-bezier(.2,.7,.2,1) forwards,float 6s 3s ease-in-out infinite}
+.needle{animation:needleIn 2s 1s cubic-bezier(.2,.7,.2,1) both,float 6s 3s ease-in-out infinite}
 .spark{opacity:0;animation:spark 3s 2.6s ease-in-out infinite}
 .ripple{opacity:0;transform-origin:720px 606px;animation:ripple 3s 2.6s ease-out infinite}
 .ripple.d2{animation-delay:4.1s}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes fade{to{opacity:1}}
-@keyframes needleIn{to{transform:none;opacity:1}}
+/* 动画均以“可见”为终态；动画被禁用时元素直接可见 */
+@keyframes draw{from{stroke-dashoffset:2400}to{stroke-dashoffset:0}}
+@keyframes draw3{from{stroke-dashoffset:760}to{stroke-dashoffset:0}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes needleIn{from{transform:translateY(-60px);opacity:0}to{transform:none;opacity:1}}
 @keyframes float{50%{transform:translateY(-6px)}}
 @keyframes spark{0%,100%{opacity:.2}50%{opacity:1}}
 @keyframes ripple{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(7)}}
@@ -78,10 +81,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:.06em}
 .hero-tag{font:600 clamp(20px,2.6vw,30px) var(--serif);letter-spacing:.32em;color:var(--snow)}
 .hero-sub{text-shadow:0 1px 8px #0b0d10;max-width:560px;margin:14px auto 36px;color:var(--mute);font-size:15px}
 .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.hero-inner>*{opacity:0;transform:translateY(14px);animation:rise 1.1s ease forwards}
+.js .hero-inner>*{animation:rise 1.1s ease both}
 .hero-inner>:nth-child(1){animation-delay:.6s}.hero-inner>:nth-child(2){animation-delay:.8s}.hero-inner>:nth-child(3){animation-delay:1s}
 .hero-inner>:nth-child(4){animation-delay:1.3s}.hero-inner>:nth-child(5){animation-delay:1.5s}.hero-inner>:nth-child(6){animation-delay:1.7s}
-@keyframes rise{to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;width:22px;height:36px;border:1px solid var(--line);border-radius:12px}
 .scroll-hint span{position:absolute;left:50%;top:7px;width:2px;height:8px;margin-left:-1px;background:var(--gold);border-radius:2px;animation:hint 2s infinite}
 @keyframes hint{0%{opacity:0;transform:none}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
@@ -97,8 +100,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:.06em}
 .rule::after{content:"";position:absolute;left:50%;top:-3px;width:7px;height:7px;margin-left:-3.5px;transform:rotate(45deg);background:var(--bg);border:1px solid var(--gold)}
 .intro{color:var(--mute)}
 .source{font-size:13px;color:var(--mute);opacity:.85;margin-top:22px;text-align:center}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease;transition-delay:var(--d,0ms)}
-.reveal.in{opacity:1;transform:none}
+/* 默认可见；只有 <html class="js">（head 内联脚本添加）时才先隐藏，滚动到时加 .in 显示 */
+.reveal{transition:opacity .9s ease,transform .9s ease;transition-delay:var(--d,0ms)}
+.js .reveal{opacity:0;transform:translateY(24px)}
+.js .reveal.in{opacity:1;transform:none}
 h3 small{font:italic 400 .62em var(--en);letter-spacing:.1em;color:var(--mute);margin-left:.5em}
 
 /* 关于 */
@@ -258,6 +263,7 @@ h3 small{font:italic 400 .62em var(--en);letter-spacing:.1em;color:var(--mute);m
   .eyebrow{letter-spacing:.28em;font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.js .reveal,.hero-inner>*,.needle,.snowcap{opacity:1!important;transform:none!important}
+  .ridge,.moon{stroke-dashoffset:0!important}
 }

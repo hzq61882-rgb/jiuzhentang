@@ -1,26 +1,42 @@
 # 久真堂 · Jiu Zhen Tang — 宣传网站（静态）
 
-纯 HTML / CSS / JS，无需构建。未发布、未部署。
+纯 HTML / CSS / JS。所有文字已直接写进 `index.html`，**关闭 JavaScript 或脚本加载失败时也能完整显示**。未发布、未部署。
 
 ## 文件
-- `index.html` — 页面结构（含首屏金针 + 雪岭线描 SVG 动画）
+- `index.html` — 完整页面（所有栏目文字已预先写入；首屏金针 + 雪岭线描 SVG 动画）。由 `tools/build.js` 生成
 - `css/style.css` — 全部样式（深色底 + 金色点缀，响应式）
-- `js/main.js` — **全站文案唯一编辑处**（顶部 `CONTENT` 对象）+ 渲染与交互
+- `js/main.js` — **只负责交互**（手机菜单、导航高亮、滚动渐显、九针弹窗、复制、飘雪），不再生成文字
+- `tools/content.js` — **全站文案唯一编辑处**（`CONTENT` 对象）
+- `tools/build.js` — 根据 `tools/content.js` 重新生成 `index.html`
+- `tools/hero-art.svg` — 首屏金针 / 雪岭 SVG（build.js 会把它嵌进 index.html）
 - `assets/logo.svg` — 金针 + 雪岭 圆形标志
 - `assets/favicon.svg` — 网站图标
 - `shots/` — 预览截图（desktop.png / mobile.png / hero.png，不随 zip 打包）
+
+## 修改文案
+1. 打开 `tools/content.js`，修改 `CONTENT` 里的文字（`【…】` 形式的文字会显示为金色虚线占位框）。
+2. 在站点根目录运行：`node tools/build.js`（需要 Node.js，任何版本 ≥ 14 均可），`index.html` 会被重新生成。
+3. 没有 Node.js 也可以直接改 `index.html` 里的文字——但之后如果再运行 build.js，手改的内容会被 `content.js` 覆盖，记得同步。
+
+> 九针卡片的弹窗原文保存在 `index.html` 中每张 `.ncard` 的 `data-quote` 等属性里（build.js 会自动写入）。
+
+## 加载与显示的保险机制
+- 文字是静态 HTML，不依赖 JS。
+- “滚动渐显”只在 `<html class="js">` 时生效（由 `<head>` 里一行内联脚本添加）；若 1.5 秒内 `main.js` 没有运行，会自动取消隐藏，全部内容直接显示。
+- 首屏入场动画以“可见”为终态；系统开启“减少动态效果”时所有内容立即显示、动画关闭。
+- Google Fonts 以非阻塞方式加载（`media="print"` + `onload`，附 `<noscript>` 回退），国内网络访问不到时不会卡住页面，自动使用系统字体：宋体类（Noto Serif SC / Source Han Serif SC / Songti SC / STSong / SimSun）、楷体（标题：STKaiti / KaiTi）、黑体类（PingFang SC / Microsoft YaHei）。
 
 ## 预览
 - 直接双击打开 `index.html`；或
 - 在本目录运行 `python3 -m http.server 8000`，浏览器打开 http://localhost:8000
 
-字体来自 Google Fonts（Ma Shan Zheng / Noto Serif SC / Noto Sans SC / Cormorant Garamond）；若网络无法访问 Google Fonts，会自动回退到系统中文字体。
+字体来自 Google Fonts（Ma Shan Zheng / Noto Serif SC / Noto Sans SC / Cormorant Garamond），非阻塞加载；若网络无法访问 Google Fonts，会自动回退到系统中文字体。
 
 ## 交互
 吸顶导航（滚动高亮当前栏目）、平滑滚动、手机端菜单、滚动渐显、九针卡片点击弹出《灵枢》原文、联系信息点击复制、首屏飘雪（系统开启“减少动态效果”时自动关闭动画）。
 
 ## 待填占位（页面上显示为虚线金框，搜索 `【` 即可全部找到）
-关于（js/main.js → CONTENT.about）
+关于（tools/content.js → CONTENT.about）
 - 【待放置：黄药师 肖像照片】（替换 `.portrait` 中的标志图）
 - 【待补充：传承谱系图（可选）】
 
