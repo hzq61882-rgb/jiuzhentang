@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>久真堂 · Jiu Zhen Tang — 金针济世 · 返本归元</title>
+<meta name="description" content="久真堂：中医针灸文化品牌。金针传承、武医同源、养生文化。">
+<meta name="theme-color" content="#0b0d10">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- 所有文案统一在 js/main.js 顶部的 CONTENT 对象里修改。本文件只负责结构。 -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="久真堂 首页">
+    <img src="assets/logo.svg" alt="" width="36" height="36">
+    <span class="brand-txt"><b data-c="brand.name"></b><small data-c="brand.en"></small></span>
+  </a>
+  <button class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  <nav class="menu" id="menu" aria-label="主导航"></nav>
+</header>
+
+<main id="top">
+  <!-- 1 HERO -->
+  <section class="hero" id="hero">
+    <svg class="hero-art" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="720" y1="120" x2="720" y2="606">
+          <stop offset="0" stop-color="#f6e3a8"/><stop offset=".6" stop-color="#d4a94a"/><stop offset="1" stop-color="#8a6420"/>
+        </linearGradient>
+        <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="#e8c66e" stop-opacity=".35"/><stop offset="1" stop-color="#e8c66e" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0b0d10" stop-opacity="0"/><stop offset="1" stop-color="#0b0d10"/>
+        </linearGradient>
+      </defs>
+      <circle class="moon" cx="1080" cy="230" r="120" fill="none" stroke="#d4a94a" stroke-opacity=".25"/>
+      <circle cx="1080" cy="230" r="180" fill="url(#halo)"/>
+      <!-- 雪岭 snow ridges, back to front -->
+      <path class="ridge r3" d="M0 610 L120 560 L210 585 L330 500 L420 540 L520 470 L640 530 L760 455 L880 520 L980 480 L1090 540 L1210 470 L1320 520 L1440 490"/>
+      <path class="ridge r2" d="M0 680 L90 640 L200 660 L300 590 L380 620 L470 560 L560 610 L690 540 L800 600 L900 570 L1010 630 L1130 560 L1250 610 L1350 580 L1440 610"/>
+      <path class="ridge r1" d="M0 760 L140 700 L250 730 L360 660 L470 710 L600 640 L720 700 L840 650 L960 720 L1080 670 L1200 720 L1320 680 L1440 720"/>
+      <path class="snowcap" d="M1130 560 L1110 576 L1126 579 L1140 571 L1152 578 Z M470 560 L452 575 L466 578 L480 570 Z"/>
+      <rect x="0" y="640" width="1440" height="260" fill="url(#fade)"/>
+      <!-- 金针 golden needle -->
+      <g class="needle-wrap">
+      <g class="needle">
+        <ellipse cx="720" cy="600" rx="90" ry="10" fill="url(#halo)"/>
+        <g stroke="url(#gold)" stroke-linecap="round" fill="none">
+          <path d="M720 120 v14" stroke-width="5"/>
+          <path d="M706 142 h28 M706 152 h28 M706 162 h28 M706 172 h28 M706 182 h28 M706 192 h28" stroke-width="4"/>
+          <path d="M720 198 L720 590" stroke-width="3"/>
+        </g>
+        <path d="M718 586 L720 606 L722 586 Z" fill="#f6e3a8"/>
+      </g>
+      <circle class="spark" cx="720" cy="606" r="3" fill="#fff3cf"/>
+      <circle class="ripple" cx="720" cy="606" r="8" fill="none" stroke="#e8c66e"/>
+      <circle class="ripple d2" cx="720" cy="606" r="8" fill="none" stroke="#e8c66e"/>
+      </g>
+    </svg>
+    <canvas class="snow" id="snow" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="eyebrow" data-c="hero.eyebrow"></p>
+      <h1 class="hero-title" data-c="brand.name"></h1>
+      <p class="hero-en" data-c="hero.en"></p>
+      <p class="hero-tag" data-c="hero.tagline"></p>
+      <p class="hero-sub" data-c="hero.sub"></p>
+      <div class="hero-cta">
+        <a class="btn gold" href="#needles" data-c="hero.cta1"></a>
+        <a class="btn ghost" href="#contact" data-c="hero.cta2"></a>
+      </div>
+    </div>
+    <a class="scroll-hint" href="#about" aria-label="向下滚动"><span></span></a>
+  </section>
+
+  <section class="sec" id="about"></section>
+  <section class="sec alt" id="needles"></section>
+  <section class="sec" id="lineage"></section>
+  <section class="sec alt" id="wellness"></section>
+  <section class="sec" id="cases"></section>
+  <section class="sec alt" id="courses"></section>
+  <section class="sec" id="contact"></section>
+</main>
+
+<footer class="footer" id="footer"></footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-card"><button class="modal-x" aria-label="关闭">×</button><div id="modalBody"></div></div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
