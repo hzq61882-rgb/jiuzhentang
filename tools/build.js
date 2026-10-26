@@ -97,7 +97,7 @@ const html = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(B.name)} · ${esc(B.en)} — 金针济世 · 返本归元</title>
 <meta name="description" content="${esc(B.name)}：中医针灸文化品牌。金针传承、武医同源、养生文化。">
-<meta name="theme-color" content="#0b0d10">
+<meta name="theme-color" content="#6B3A8C">
 <!-- 有 JS 时才启用“渐显”隐藏；1.5 秒内 main.js 未运行则自动全部显示 -->
 <script>(function(d){d.classList.add("js");setTimeout(function(){if(!d.classList.contains("ready")){d.classList.remove("js");}},1500);})(document.documentElement);</script>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">

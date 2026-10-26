@@ -71,7 +71,7 @@
       const size = () => { W = cv.width = cv.offsetWidth * devicePixelRatio; H = cv.height = cv.offsetHeight * devicePixelRatio;
         flakes = Array.from({ length: Math.round(W * H / 26000) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: (Math.random() * 1.4 + .4) * devicePixelRatio, s: Math.random() * .4 + .15, w: Math.random() * 6.28 })); };
       size(); addEventListener("resize", size);
-      (function tick() { ctx.clearRect(0, 0, W, H); ctx.fillStyle = "rgba(233,237,242,.55)";
+      (function tick() { ctx.clearRect(0, 0, W, H); ctx.fillStyle = "rgba(243,234,214,.72)";
         for (const f of flakes) { f.y += f.s * devicePixelRatio; f.w += .01; f.x += Math.sin(f.w) * .25; if (f.y > H) { f.y = -4; f.x = Math.random() * W; }
           ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.283); ctx.fill(); }
         requestAnimationFrame(tick); })();
