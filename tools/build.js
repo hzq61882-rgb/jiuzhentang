@@ -92,7 +92,7 @@ const T = CONTENT.contact;
 const contact = `<div class="wrap">${head(T)}
     <div class="contact-grid reveal">
       <dl class="crow">${T.rows.map(([k, v]) => `<div><dt>${t(k)}</dt><dd><button class="copy" type="button" data-v="${esc(v)}">${t(v)}</button></dd></div>`).join("")}</dl>
-      <div class="qr"><div class="qr-box"><img src="assets/logo.svg" alt=""></div><p>${t(T.qr)}</p><small>${t(T.copyHint)}</small></div>
+      <div class="qr"><div class="qr-box"><img src="assets/wechat-qr.jpg" alt="久真堂 黄药师 微信二维码" width="480" height="480" loading="lazy"></div><p>${t(T.qr)}</p><small>${t(T.copyHint)}</small></div>
     </div></div>`;
 
 const F = CONTENT.footer;

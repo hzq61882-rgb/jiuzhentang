@@ -220,8 +220,8 @@ h3 small{font:italic 400 .62em var(--en);letter-spacing:.1em;color:var(--mute);m
 .copy:hover{color:var(--gold2)}
 .copy.ok::after{content:"  已复制";color:var(--gold);font-size:12px}
 .qr{text-align:center}
-.qr-box{width:180px;height:180px;margin:0 auto 12px;border:1px dashed rgba(212,169,74,.55);display:grid;place-items:center;background:rgba(212,169,74,.04)}
-.qr-box img{width:64px;opacity:.5}
+.qr-box{width:188px;height:188px;margin:0 auto 12px;padding:12px;border:1px solid rgba(212,169,74,.7);outline:1px solid rgba(212,169,74,.25);outline-offset:5px;background:#fff;border-radius:4px}
+.qr-box img{width:100%;height:100%;display:block}
 .qr p{font-size:13px}.qr small{color:var(--mute);font-size:12px}
 
 /* 页脚 */
