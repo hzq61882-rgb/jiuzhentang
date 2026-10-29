@@ -228,6 +228,9 @@ h3 small{font:italic 400 .62em var(--en);letter-spacing:.1em;color:var(--mute);m
 .footer{border-top:1px solid var(--line);padding:56px 0 40px;text-align:center;background:#08090b}
 .footer img{margin:0 auto 14px}
 .fline{font:500 16px var(--serif);color:var(--gold2);letter-spacing:.2em}
+.flinks{margin-top:10px;font:400 14px var(--serif);letter-spacing:.12em;color:var(--mute);display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.flinks a{color:var(--gold2);border-bottom:1px solid var(--line);transition:color .2s,border-color .2s}
+.flinks a:hover{color:var(--gold);border-color:var(--gold)}
 .fdis,.fcopy{font-size:12.5px;color:var(--mute);margin-top:8px}
 
 /* 弹窗 */
@@ -241,6 +244,24 @@ h3 small{font:italic 400 .62em var(--en);letter-spacing:.1em;color:var(--mute);m
 .modal-card p{font-size:14.5px;margin-bottom:6px}
 .modal-card b,.ccard b{color:var(--gold);font-weight:500;margin-right:.6em;font-family:var(--serif)}
 .modal-card .source{text-align:left}
+
+/* 穴光 · AcuAtlas 页面 */
+.nav.solid{background:rgba(11,13,16,.94);border-color:var(--line)}
+.xg-main{padding-top:var(--nav)}
+.xg-strip{--strip:52px;height:var(--strip);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 28px;
+  border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(212,169,74,.12),rgba(212,169,74,.02) 60%,transparent);position:relative}
+.xg-strip::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--gold2),var(--gold3))}
+.xg-title{display:flex;align-items:baseline;gap:14px;min-width:0;font-weight:400;letter-spacing:.08em;white-space:nowrap;overflow:hidden}
+.xg-title b{font:600 18px var(--serif);color:var(--gold2);letter-spacing:.14em}
+.xg-slogan{font:400 14px var(--serif);color:var(--ink)}
+.xg-by{font:400 12px var(--serif);color:var(--gold);letter-spacing:.24em}
+.xg-open{flex:none;font:400 13px var(--serif);color:var(--gold2);border:1px solid var(--gold);padding:4px 12px;border-radius:2px;letter-spacing:.12em;transition:background .2s}
+.xg-open:hover{background:rgba(212,169,74,.12)}
+.xg-frame-wrap{position:relative;background:#06070a}
+.xg-frame{display:block;width:100%;border:0;height:calc(100vh - var(--nav) - 52px);height:calc(100dvh - var(--nav) - 52px);min-height:480px;background:#06070a}
+.xg-fallback{padding:40px 20px;text-align:center}
+.xg-fallback a,.xg-note a{color:var(--gold2);border-bottom:1px solid var(--line)}
+.xg-note{text-align:center;font-size:12.5px;color:var(--mute);padding:12px 20px}
 
 /* 响应式 */
 @media (max-width:1024px){
@@ -266,6 +287,12 @@ h3 small{font:italic 400 .62em var(--en);letter-spacing:.1em;color:var(--mute);m
 }
 @media (max-width:640px){
   body{font-size:15px}
+  .xg-strip{padding:0 12px 0 16px}
+  .xg-title{gap:8px}.xg-title b{font-size:16px;letter-spacing:.06em}
+  .xg-by{display:none}
+  .xg-slogan{font-size:12.5px;overflow:hidden;text-overflow:ellipsis}
+  .xg-open{padding:3px 8px;font-size:12px;letter-spacing:.04em}
+  .xg-frame{min-height:85vh}
   .nav{padding:0 14px}
   .sec{padding:84px 0}
   .sec-head{margin-bottom:44px}

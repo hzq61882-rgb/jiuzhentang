@@ -13,8 +13,18 @@ const CONTENT = {
 
   nav: [
     ["tang", "堂史"], ["about", "药师"], ["needles", "九针"], ["lineage", "传承"], ["wellness", "养生"],
-    ["cases", "专长"], ["courses", "课程"], ["contact", "联系"]
+    ["cases", "专长"], ["courses", "课程"], ["contact", "联系"], ["xueguang.html", "穴光"]
   ],
+
+  /* 穴光 · AcuAtlas —— 久真堂出品的穴位学习应用（独立页面 xueguang.html，iframe 嵌入；学习进度保存在浏览器本地） */
+  app: {
+    name: "穴光 · AcuAtlas",
+    slogan: "一穴一星，点亮经络",
+    by: "久真堂出品",
+    url: "https://xueguang-acuatlas.app.workbuddy.host/?sharecode=3IVJJXNYKC",
+    open: "新窗口打开",
+    fallback: "应用未能加载？请点此在新窗口打开 穴光 · AcuAtlas"
+  },
 
   hero: {
     eyebrow: "中医针灸 · 武医同源 · 养生文化",

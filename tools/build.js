@@ -96,18 +96,23 @@ const contact = `<div class="wrap">${head(T)}
     </div></div>`;
 
 const F = CONTENT.footer;
-const footer = `<div class="wrap"><img src="assets/logo.svg" alt="" width="44" height="44"><p class="fline">${t(F.line)}</p><p class="fdis">${t(F.disclaimer)}</p><p class="fcopy">${t(F.copy)}</p></div>`;
-
-const FONTS = "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap";
-
-const html = `<!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(B.name)} · ${esc(B.en)} — 金针济世 · 返本归元</title>
-<meta name="description" content="${esc(B.name)}：由清代医家黄元御创立，以“中气为本、一气周流”为核心；当代黄忠强接续传承，双脉并承泉派中医与新九针。">
-<meta name="theme-color" content="#0b0d10">
+const P = CONTENT.app;
+const footer = `<div class="wrap"><img src="assets/logo.svg" alt="" width="44" height="44"><p class="fline">${t(F.line)}</p><p class="flinks"><a href="xueguang.html">${t(P.name)}</a><span aria-hidden="true">·</span><span>${t(P.slogan)}</span></p><p class="fdis">${t(F.disclaimer)}</p><p class="fcopy">${t(F.copy)}</p></div>`;
+// 导航：首页用 #锚点；其他页面（如 xueguang.html）用 index.html#锚点。以 .html 结尾的条目是独立页面。
+const navLinks = (home, current) => CONTENT.nav.map(([id, l]) => {
+  const isPage = /\.html$/.test(id), href = isPage ? id : (home ? "#" : "index.html#") + id;
+  const on = isPage && id === current ? ' class="on" aria-current="page"' : "";
+  return `<a href="${href}"${on}>${t(l)}</a>`;
+}).join("");
+const navBar = (home, current) => `<header class="nav${home ? "" : " solid"}" id="nav">
+  <a class="brand" href="${home ? "#top" : "index.html"}" aria-label="${esc(B.name)} 首页">
+    <img src="assets/logo.svg" alt="" width="36" height="36">
+    <span class="brand-txt"><b>${t(B.name)}</b><small>${t(B.en)}</small></span>
+  </a>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  <nav class="menu" id="menu" aria-label="主导航">${navLinks(home, current)}</nav>
+</header>`;
+const headCommon = `<meta name="theme-color" content="#0b0d10">
 <!-- 有 JS 时才启用“渐显”隐藏；1.5 秒内 main.js 未运行则自动全部显示 -->
 <script>(function(d){d.classList.add("js");setTimeout(function(){if(!d.classList.contains("ready")){d.classList.remove("js");}},1500);})(document.documentElement);</script>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -115,20 +120,25 @@ const html = `<!doctype html>
 <!-- Google Fonts 非阻塞加载：加载失败（如国内网络）时直接使用系统中文字体 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${FONTS}" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="${FONTS}"></noscript>
+<link rel="stylesheet" href="FONTS_URL" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="FONTS_URL"></noscript>`;
+
+const FONTS = "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap";
+
+const HEADC = headCommon.replace(/FONTS_URL/g, FONTS);
+const html = `<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(B.name)} · ${esc(B.en)} — 金针济世 · 返本归元</title>
+<meta name="description" content="${esc(B.name)}：由清代医家黄元御创立，以“中气为本、一气周流”为核心；当代黄忠强接续传承，双脉并承泉派中医与新九针。">
+${HEADC}
 </head>
 <body>
 <!-- 本文件由 tools/build.js 根据 tools/content.js 生成。改文案：编辑 tools/content.js 后运行 node tools/build.js；
      也可以直接修改本文件（但下次运行 build.js 会被覆盖）。 -->
-<header class="nav" id="nav">
-  <a class="brand" href="#top" aria-label="${esc(B.name)} 首页">
-    <img src="assets/logo.svg" alt="" width="36" height="36">
-    <span class="brand-txt"><b>${t(B.name)}</b><small>${t(B.en)}</small></span>
-  </a>
-  <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-  <nav class="menu" id="menu" aria-label="主导航">${CONTENT.nav.map(([id, l]) => `<a href="#${id}">${t(l)}</a>`).join("")}</nav>
-</header>
+${navBar(true)}
 
 <main id="top">
   <!-- 1 HERO -->
@@ -169,3 +179,37 @@ ${fs.readFileSync(path.join(__dirname, "hero-art.svg"), "utf8").trimEnd()}
 `;
 fs.writeFileSync(path.join(ROOT, "index.html"), html);
 console.log("index.html 已生成（" + Buffer.byteLength(html) + " bytes）");
+
+/* ---------- 穴光 · AcuAtlas 独立页面：xueguang.html ---------- */
+const xg = `<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(P.name)} — ${esc(P.slogan)} · ${esc(B.name)}</title>
+<meta name="description" content="${esc(P.name)}：${esc(P.slogan)}。${esc(B.name)}出品的穴位学习应用。">
+${HEADC}
+</head>
+<body class="xg-page">
+<!-- 本文件由 tools/build.js 生成，请勿直接修改。应用地址在 tools/content.js → CONTENT.app.url -->
+${navBar(false, "xueguang.html")}
+
+<main id="top" class="xg-main">
+  <div class="xg-strip">
+    <h1 class="xg-title"><b>${t(P.name)}</b><span class="xg-slogan">${t(P.slogan)}</span><span class="xg-by">${t(P.by)}</span></h1>
+    <a class="xg-open" href="${esc(P.url)}" target="_blank" rel="noopener">${t(P.open)} ↗</a>
+  </div>
+  <div class="xg-frame-wrap">
+    <iframe class="xg-frame" id="xgFrame" src="${esc(P.url)}" title="${esc(P.name)} —— ${esc(B.name)}穴位学习应用" allow="fullscreen" allowfullscreen loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <noscript><p class="xg-fallback"><a href="${esc(P.url)}" target="_blank" rel="noopener">${t(P.fallback)}</a></p></noscript>
+  </div>
+  <p class="xg-note">学习进度保存在本浏览器中。<a href="${esc(P.url)}" target="_blank" rel="noopener">${t(P.fallback)}</a></p>
+</main>
+
+<footer class="footer" id="footer">${footer}</footer>
+<script src="js/main.js" defer></script>
+</body>
+</html>
+`;
+fs.writeFileSync(path.join(ROOT, "xueguang.html"), xg);
+console.log("xueguang.html 已生成（" + Buffer.byteLength(xg) + " bytes）");
