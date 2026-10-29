@@ -200,7 +200,7 @@ ${navBar(false, "xueguang.html")}
     <a class="xg-open" href="${esc(P.url)}" target="_blank" rel="noopener">${t(P.open)} ↗</a>
   </div>
   <div class="xg-frame-wrap">
-    <iframe class="xg-frame" id="xgFrame" src="${esc(P.url)}" title="${esc(P.name)} —— ${esc(B.name)}穴位学习应用" allow="fullscreen" allowfullscreen loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <iframe class="xg-frame" id="xgFrame" src="${esc(P.url)}" title="${esc(P.name)} —— ${esc(B.name)}穴位学习应用" allow="fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     <noscript><p class="xg-fallback"><a href="${esc(P.url)}" target="_blank" rel="noopener">${t(P.fallback)}</a></p></noscript>
   </div>
   <p class="xg-note">学习进度保存在本浏览器中。<a href="${esc(P.url)}" target="_blank" rel="noopener">${t(P.fallback)}</a></p>

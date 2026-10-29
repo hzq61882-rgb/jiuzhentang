@@ -61,3 +61,9 @@
 - 传承时间轴：《黄帝内经》、《针灸甲乙经》（西晋）、《备急千金要方》（652）、《铜人腧穴针灸图经》与天圣铜人（1026–1027）、《十四经发挥》（1341）、《针灸大成》（1601）、2006 国家级非遗、2010 联合国教科文组织人类非遗代表作、2011 世界记忆名录。
 - “临床专长”为诊疗思路介绍，附免责声明：不构成医疗建议，具体诊疗请面诊。
 - 品牌名已统一为“久真堂”（与已有课件《久真堂新九针》一致）。
+
+## 穴光 · AcuAtlas（app/xueguang/）
+- `xueguang.html` 由 `tools/build.js` 生成，用 iframe 嵌入本站自带的 `app/xueguang/index.html`（地址在 `tools/content.js → CONTENT.app.url`）。
+- `app/xueguang/` 是应用的静态镜像（HTML + CSS + JS，含本地化的 ts-fsrs），运行时不访问 workbuddy 或任何境外 CDN。
+- **更新应用**：在站点根目录运行 `bash tools/mirror-xueguang.sh`（会重新抓取 workbuddy 上的最新版本并覆盖 `app/xueguang/`；脚本发现外部依赖会报错退出），检查 `git diff` 后提交推送。
+- 学习进度保存在浏览器 localStorage，按域名区分：workbuddy 链接上的旧进度不会自动带过来（可在应用设置里“导出 / 导入进度”）。

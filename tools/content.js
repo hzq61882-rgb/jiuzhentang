@@ -21,7 +21,7 @@ const CONTENT = {
     name: "穴光 · AcuAtlas",
     slogan: "一穴一星，点亮经络",
     by: "久真堂出品",
-    url: "https://xueguang-acuatlas.app.workbuddy.host/?sharecode=3IVJJXNYKC",
+    url: "app/xueguang/index.html",
     open: "新窗口打开",
     fallback: "应用未能加载？请点此在新窗口打开 穴光 · AcuAtlas"
   },

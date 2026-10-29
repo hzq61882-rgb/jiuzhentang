@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>穴光 · AcuAtlas — 一穴一星，点亮经络 · 久真堂出品</title>
+<meta name="author" content="久真堂">
+<meta name="description" content="穴光 AcuAtlas —— 361 经穴 + 36 奇穴星图记忆；天星十二穴配北斗七星；子午流注当令点亮；穴名解。久真堂出品。">
+<link rel="stylesheet" href="css/style.css?v=1028t">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✦</text></svg>">
+</head>
+<body>
+
+<!-- 顶栏 -->
+<header id="topbar">
+  <div class="brand-seal" id="brand-seal" title="久真堂出品">久真堂</div>
+  <div class="brand" id="brand" title="回到星图">
+    <span class="brand-star">✦</span>
+    <span class="brand-name">穴光 <em>AcuAtlas</em></span>
+    <span class="brand-sub">一穴一星，点亮经络</span>
+  </div>
+  <div class="top-actions">
+    <button id="btn-dipper" class="btn btn-ghost" title="天星十二穴 · 北斗七星">北斗</button>
+    <button id="btn-settings" class="btn btn-ghost" title="设置">⚙</button>
+  </div>
+</header>
+
+<!-- 状态标签 · 竖排挂在设置按钮下方 -->
+<div class="stats" id="stats">
+  <span class="chip chip-new" id="chip-new">新学 0/10</span>
+  <span class="chip chip-due" id="chip-due">待复习 0</span>
+  <span class="chip chip-mastered" id="chip-mastered">已点亮 0/397</span>
+  <span class="chip chip-tx" id="chip-tianxing">北斗 0/12</span>
+</div>
+
+<!-- 开始今日 + 久真堂出品 · 右下角 -->
+<div id="corner-stack">
+  <button id="btn-learn" class="btn btn-primary btn-start" title="开始今日学习">开始今日</button>
+  <div id="corner-mark" title="久真堂出品">久真堂出品</div>
+</div>
+
+<!-- 星图 -->
+<main>
+  <section id="view-map" class="view">
+    <canvas id="sky"></canvas>
+    <div id="legend">
+      <span class="lg"><i class="dot d-dim"></i>未学</span>
+      <span class="lg"><i class="dot d-learn"></i>学习中</span>
+      <span class="lg"><i class="dot d-today"></i>今日新点亮</span>
+      <span class="lg"><i class="dot d-mastered"></i>已掌握</span>
+      <span class="lg"><i class="dot d-flow"></i>当令时辰</span>
+    </div>
+    <div id="map-hint">点击任意一颗星，翻开它的穴卡</div>
+
+    <!-- 左下角：当下时辰 -->
+    <div id="sky-hud">
+      <div id="liuzhu" title="子午流注：一个时辰 120 分钟，均分给本经诸穴，自井穴顺经依次点亮 · 点击查看当令穴">
+        <div class="lz-zhi" id="lz-zhi">酉</div>
+        <div class="lz-main">
+          <div class="lz-top"><span id="lz-mer">足少阴肾经</span><span id="lz-range">17:00–19:00</span></div>
+          <div class="lz-row">
+            <div class="lz-cur" id="lz-cur">幽门 <em>KI21</em></div>
+            <div class="lz-bar"><i id="lz-fill"></i></div>
+            <div class="lz-left" id="lz-left">21/27 · 剩 3′12″</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 学习 -->
+  <section id="view-learn" class="view" hidden>
+    <div class="learn-head">
+      <button id="btn-back" class="btn btn-ghost">← 星图</button>
+      <div class="learn-progress"><div id="learn-bar"></div></div>
+      <span id="learn-count">0 / 0</span>
+    </div>
+    <div id="quiz-area"></div>
+  </section>
+</main>
+
+<!-- 穴卡 -->
+<div id="card-modal" class="modal" hidden>
+  <div class="card-sheet">
+    <button class="close-btn" id="card-close">×</button>
+    <div id="card-body"></div>
+  </div>
+</div>
+
+<!-- 北斗面板 -->
+<div id="dipper-panel" class="modal" hidden>
+  <div class="settings-panel wide">
+    <button class="close-btn" id="dipper-close">×</button>
+    <h2>天星十二穴 · 北斗七星</h2>
+    <p class="fine" style="margin-bottom:14px">
+      据《针灸大成·马丹阳天星十二穴并治杂病歌》。十二穴配七星的归属为 <b>v0.1 暂定框架</b>——斗魁四星各辖一对穴，斗柄三星各辖单穴，待师父校准后改 <code>js/bigdipper.js</code> 即可。
+    </p>
+    <div id="dipper-sky"></div>
+    <div id="dipper-body"></div>
+    <div class="song-wrap">
+      <div class="song-title">天星十二穴歌</div>
+      <div class="song" id="dipper-song"></div>
+    </div>
+    <label class="row" style="margin-top:14px">
+      <span>在星图上显示北斗图层</span>
+      <input type="checkbox" id="toggle-dipper-layer" checked>
+    </label>
+  </div>
+</div>
+
+<!-- 设置 -->
+<div id="settings-sheet" class="modal" hidden>
+  <div class="settings-panel">
+    <button class="close-btn" id="settings-close">×</button>
+    <h2>设置</h2>
+    <label class="row">
+      <span>每日新学上限</span>
+      <select id="set-newperday">
+        <option value="5">5 穴</option>
+        <option value="10" selected>10 穴</option>
+        <option value="15">15 穴</option>
+        <option value="20">20 穴</option>
+        <option value="30">30 穴</option>
+      </select>
+    </label>
+    <label class="row">
+      <span>目标记忆率（FSRS）</span>
+      <select id="set-retention">
+        <option value="0.8">80% · 少复习</option>
+        <option value="0.9" selected>90% · 推荐</option>
+        <option value="0.95">95% · 多复习</option>
+      </select>
+    </label>
+    <label class="row">
+      <span>音效</span>
+      <input type="checkbox" id="set-sound" checked>
+    </label>
+    <label class="row">
+      <span>语音朗读（所有文字可读）</span>
+      <input type="checkbox" id="set-voice" checked>
+    </label>
+    <label class="row">
+      <span>朗读语速</span>
+      <select id="set-rate">
+        <option value="0.75">慢 · 适合跟读</option>
+        <option value="0.92" selected>适中</option>
+        <option value="1.1">快 · 适合复习</option>
+      </select>
+    </label>
+    <label class="row">
+      <span>自动朗读（换题、开卡时）</span>
+      <input type="checkbox" id="set-autoread" checked>
+    </label>
+    <label class="row">
+      <span>子午流注（按时辰点亮经络）</span>
+      <input type="checkbox" id="set-flow" checked>
+    </label>
+    <label class="row">
+      <span>观测地（决定北斗指向）</span>
+      <select id="set-obs">
+        <option value="上海">上海 · 31.2°N</option>
+        <option value="北京">北京 · 39.9°N</option>
+        <option value="广州">广州 · 23.1°N</option>
+        <option value="成都">成都 · 30.6°N</option>
+        <option value="西安">西安 · 34.3°N</option>
+        <option value="武汉">武汉 · 30.6°N</option>
+        <option value="昆明">昆明 · 25.0°N</option>
+        <option value="哈尔滨">哈尔滨 · 45.8°N</option>
+        <option value="乌鲁木齐">乌鲁木齐 · 43.8°N</option>
+        <option value="香港">中国香港 · 22.3°N</option>
+        <option value="台北">中国台北 · 25.0°N</option>
+      </select>
+    </label>
+    <div class="row-buttons">
+      <button id="btn-test-voice" class="btn">试听语音</button>
+    </div>
+    <div class="row-buttons">
+      <button id="btn-export" class="btn">导出进度</button>
+      <button id="btn-import" class="btn">导入进度</button>
+      <button id="btn-reset" class="btn btn-danger">清空重来</button>
+    </div>
+    <p class="fine">复习调度：FSRS（ts-fsrs 5.4.2，与新版 Anki 同源算法）。<br>
+    进度只存本机浏览器，不上传任何服务器。<br>
+    穴名释义录自高式国《针灸穴名解》；数据依《针灸学》教材整理（361 经穴 + 36 奇穴），仅供学习参考，不构成诊疗依据。</p>
+    <p class="colophon"><span class="seal">久真堂</span> 出品　·　一穴一星，点亮经络</p>
+  </div>
+</div>
+
+<div id="toast" hidden></div>
+
+<script src="js/data.js?v=1028t"></script>
+<script src="js/vendor/ts-fsrs.umd.js"></script>
+<script src="js/srs.js?v=1028t"></script>
+<script src="js/bigdipper.js?v=1028t"></script>
+<script src="js/namejie.js?v=1028t"></script>
+<script src="js/astro.js?v=1028t"></script>
+<script src="js/liuzhu.js?v=1028t"></script>
+<script src="js/voice.js?v=1028t"></script>
+<script src="js/app.js?v=1028t"></script>
+</body>
+</html>

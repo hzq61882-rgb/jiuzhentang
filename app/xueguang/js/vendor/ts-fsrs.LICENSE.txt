@@ -1,0 +1,2 @@
+ts-fsrs.umd.js — open-spaced-repetition/ts-fsrs, MIT License
+https://github.com/open-spaced-repetition/ts-fsrs
