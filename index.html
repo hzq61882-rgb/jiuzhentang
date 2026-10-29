@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>久真堂 · Jiu Zhen Tang — 金针济世 · 返本归元</title>
-<meta name="description" content="久真堂：中医针灸文化品牌。金针传承、武医同源、养生文化。">
-<meta name="theme-color" content="#6B3A8C">
+<meta name="description" content="久真堂：由清代医家黄元御创立，以“中气为本、一气周流”为核心；当代黄忠强接续传承，双脉并承泉派中医与新九针。">
+<meta name="theme-color" content="#0b0d10">
 <!-- 有 JS 时才启用“渐显”隐藏；1.5 秒内 main.js 未运行则自动全部显示 -->
 <script>(function(d){d.classList.add("js");setTimeout(function(){if(!d.classList.contains("ready")){d.classList.remove("js");}},1500);})(document.documentElement);</script>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -25,7 +25,7 @@
     <span class="brand-txt"><b>久真堂</b><small>Jiu Zhen Tang</small></span>
   </a>
   <button class="menu-btn" id="menuBtn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-  <nav class="menu" id="menu" aria-label="主导航"><a href="#about">药师</a><a href="#needles">九针</a><a href="#lineage">传承</a><a href="#wellness">养生</a><a href="#cases">专长</a><a href="#courses">课程</a><a href="#contact">联系</a></nav>
+  <nav class="menu" id="menu" aria-label="主导航"><a href="#tang">堂史</a><a href="#about">药师</a><a href="#needles">九针</a><a href="#lineage">传承</a><a href="#wellness">养生</a><a href="#cases">专长</a><a href="#courses">课程</a><a href="#contact">联系</a></nav>
 </header>
 
 <main id="top">
@@ -34,16 +34,16 @@
     <svg class="hero-art" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <defs>
         <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="720" y1="120" x2="720" y2="606">
-          <stop offset="0" stop-color="#F6E7B4"/><stop offset=".6" stop-color="#D4AF37"/><stop offset="1" stop-color="#8C6A1E"/>
+          <stop offset="0" stop-color="#f6e3a8"/><stop offset=".6" stop-color="#d4a94a"/><stop offset="1" stop-color="#8a6420"/>
         </linearGradient>
         <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stop-color="#E8C96A" stop-opacity=".40"/><stop offset="1" stop-color="#E8C96A" stop-opacity="0"/>
+          <stop offset="0" stop-color="#e8c66e" stop-opacity=".35"/><stop offset="1" stop-color="#e8c66e" stop-opacity="0"/>
         </radialGradient>
         <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#6B3A8C" stop-opacity="0"/><stop offset="1" stop-color="#6B3A8C"/>
+          <stop offset="0" stop-color="#0b0d10" stop-opacity="0"/><stop offset="1" stop-color="#0b0d10"/>
         </linearGradient>
       </defs>
-      <circle class="moon" cx="1080" cy="230" r="120" fill="none" stroke="#D4AF37" stroke-opacity=".35"/>
+      <circle class="moon" cx="1080" cy="230" r="120" fill="none" stroke="#d4a94a" stroke-opacity=".25"/>
       <circle cx="1080" cy="230" r="180" fill="url(#halo)"/>
       <!-- 雪岭 snow ridges, back to front -->
       <path class="ridge r3" d="M0 610 L120 560 L210 585 L330 500 L420 540 L520 470 L640 530 L760 455 L880 520 L980 480 L1090 540 L1210 470 L1320 520 L1440 490"/>
@@ -60,11 +60,11 @@
           <path d="M706 142 h28 M706 152 h28 M706 162 h28 M706 172 h28 M706 182 h28 M706 192 h28" stroke-width="4"/>
           <path d="M720 198 L720 590" stroke-width="3"/>
         </g>
-        <path d="M718 586 L720 606 L722 586 Z" fill="#F6E7B4"/>
+        <path d="M718 586 L720 606 L722 586 Z" fill="#f6e3a8"/>
       </g>
       <circle class="spark" cx="720" cy="606" r="3" fill="#fff3cf"/>
-      <circle class="ripple" cx="720" cy="606" r="8" fill="none" stroke="#E8C96A"/>
-      <circle class="ripple d2" cx="720" cy="606" r="8" fill="none" stroke="#E8C96A"/>
+      <circle class="ripple" cx="720" cy="606" r="8" fill="none" stroke="#e8c66e"/>
+      <circle class="ripple d2" cx="720" cy="606" r="8" fill="none" stroke="#e8c66e"/>
       </g>
     </svg>
     <canvas class="snow" id="snow" aria-hidden="true"></canvas>
@@ -76,31 +76,40 @@
       <p class="hero-sub">承《灵枢》九针之制，守仁心仁术之道 —— 返本归元。</p>
       <div class="hero-cta">
         <a class="btn gold" href="#needles">认识九针</a>
-        <a class="btn ghost" href="#contact">久真堂 · 联系</a>
+        <a class="btn ghost" href="#contact">广仁堂 · 联系</a>
       </div>
     </div>
-    <a class="scroll-hint" href="#about" aria-label="向下滚动"><span></span></a>
+    <a class="scroll-hint" href="#tang" aria-label="向下滚动"><span></span></a>
   </section>
 
+  <section class="sec alt" id="tang"><div class="wrap"><div class="sec-head reveal"><span class="kicker">Our Heritage</span><h2>堂史 · 关于久真堂</h2><i class="rule"></i></div>
+    <p class="tang-core reveal">中气为本 · 一气周流</p>
+    <p class="tang-text reveal">久真堂，由清代医家黄元御创立，远宗明代五大医家，以“中气为本、一气周流”为核心。当代由黄氏同宗后裔黄忠强接续传承，双脉并承：一为泉派中医，以中形医学统方药、触诊、推拿、罐、灸；一为新九针，承古针、针刀与正骨，专治筋骨痹痛。本堂融形、气、针、药，尊古而善变通，志在传守医道本真，惠及天下。</p>
+    <div class="veins">
+      <article class="vein reveal" style="--d:0ms"><span class="vno">一</span><small>双脉 · 其一</small><h3>泉派中医</h3><p>以中形医学统方药、触诊、推拿、罐、灸。</p><ul><li>方药</li><li>触诊</li><li>推拿</li><li>罐</li><li>灸</li></ul></article>
+      <article class="vein reveal" style="--d:100ms"><span class="vno">二</span><small>双脉 · 其二</small><h3>新九针</h3><p>承古针、针刀与正骨，专治筋骨痹痛。</p><ul><li>古针</li><li>针刀</li><li>正骨</li></ul></article>
+    </div>
+    <div class="fuse reveal"><span class="fuse-k">融</span><b>形</b><i aria-hidden="true">·</i><b>气</b><i aria-hidden="true">·</i><b>针</b><i aria-hidden="true">·</i><b>药</b></div>
+    <p class="tang-motto reveal">尊古而善变通 · 传守医道本真</p>
+  </div></section>
   <section class="sec" id="about"><div class="wrap"><div class="sec-head reveal"><span class="kicker">About</span><h2>黄忠强 · 黄药师</h2><i class="rule"></i></div>
     <div class="about-grid">
-      <div class="portrait reveal" aria-hidden="true">
-        <img src="assets/logo.svg" alt="">
+      <div class="portrait reveal">
+        <img class="photo" src="assets/portrait.jpg" alt="黄忠强（德明）" width="640" height="640" loading="lazy">
         <span class="seal">返本归元</span>
-        <p class="portrait-ph"><span class="ph">【待放置：黄药师 肖像照片】</span></p>
       </div>
       <div class="about-txt reveal">
         <p class="lead">黄忠强，字德明，号黄药师 —— 武医 · 雪岭守护者 · 金针济世</p>
-        <p>山西省省级非物质文化遗产代表性传承人（泉派中医 · 新九针疗法），古传形意拳第七代嫡传传人，北京广仁堂执行院长。</p>
+        <p>山西省省级非物质文化遗产代表性传承人（泉派中医 · 新九针疗法），古传形意拳第七代嫡传传人，北京广仁堂中医研究院院长。</p>
         <p>师从王文德、李亮、余成麟诸先生，习新九针，兼及河洛针法；从张大辉先生习孙式太极。并兼修峨眉点穴（指压法）、道家针法与太上玄灵门调神法。</p>
         <p>主张绿色非药物疗法优先——运动、正骨、金针；以“形·气·神”三层诊断看人，以运动处方把调理延伸到日常。曾在古传形意拳论坛、全国九针临床交流会上分享经验。</p>
-        <dl class="facts"><div><dt>非遗</dt><dd>山西省省级非物质文化遗产代表性传承人（泉派中医 · 新九针疗法）</dd></div><div><dt>武学</dt><dd>古传形意拳第七代嫡传传人 · 孙式太极</dd></div><div><dt>机构</dt><dd>北京广仁堂执行院长</dd></div><div><dt>临床</dt><dd>三十余年 · 武医结合</dd></div></dl>
+        <dl class="facts"><div><dt>非遗</dt><dd>山西省省级非物质文化遗产代表性传承人（泉派中医 · 新九针疗法）</dd></div><div><dt>武学</dt><dd>古传形意拳第七代嫡传传人 · 孙式太极</dd></div><div><dt>机构</dt><dd>北京广仁堂中医研究院 院长</dd></div><div><dt>临床</dt><dd>三十余年 · 武医结合</dd></div></dl>
         <p class="source"><span class="ph" title="占位：请替换为真实信息">【待补充：传承谱系图（可选）】</span></p>
       </div>
     </div>
     <ol class="story"><li class="reveal" style="--d:0ms"><b>少时</b><p>幼年随父站桩，父亲以一根枪杆校正身形。桩功与呼吸，自此成为一生的底子。</p></li><li class="reveal" style="--d:80ms"><b>求学</b><p>就读山西中医药大学，系统研习中医理论；寻访南怀瑾先生旧居与隐修之处，背着针包走进山里。</p></li><li class="reveal" style="--d:160ms"><b>行医</b><p>临床三十余年，坚持武医结合；每日门诊之前，先行晨间站桩调息。</p></li></ol>
   </div></section>
-  <section class="sec alt" id="needles"><div class="wrap"><div class="sec-head reveal"><span class="kicker">The Nine Needles</span><h2>九针</h2><i class="rule"></i><p class="intro">九针之名，出自《黄帝内经·灵枢》。《九针十二原》《九针论》记述了九种形制、长短、用途各异的针具，“各不同形，各以任其所宜”。久真堂以此为名，意在溯源古制、守正创新。点击卡片可阅读原文摘句。</p></div>
+  <section class="sec alt" id="needles"><div class="wrap"><div class="sec-head reveal"><span class="kicker">The Nine Needles</span><h2>九针</h2><i class="rule"></i><p class="intro">九针之名，出自《黄帝内经·灵枢》。《九针十二原》《九针论》记述了九种形制、长短、用途各异的针具，“各不同形，各以任其所宜”。久真堂新九针一脉，溯源古制、守正创新。点击卡片可阅读原文摘句。</p></div>
     <div class="needle-grid">
       <button class="ncard reveal" type="button" data-i="0" data-n="镵针" data-py="chán zhēn" data-len="长一寸六分" data-shape="头大末锐" data-use="浅刺皮肤，以泻阳气（热在头身者）" data-today="后世皮肤针、浅刺法多溯源于此" data-quote="镵针者，头大末锐，去泻阳气。" style="--d:0ms">
         <span class="nno">一</span>
@@ -189,7 +198,8 @@
       <li class="reveal l"><span class="dot"></span><div class="tl-card"><time>2006 年</time><h3>国家级非物质文化遗产</h3><p>针灸列入第一批国家级非物质文化遗产名录（传统医药类）。</p></div></li>
       <li class="reveal r"><span class="dot"></span><div class="tl-card"><time>2010 年</time><h3>人类非物质文化遗产代表作</h3><p>联合国教科文组织将“中医针灸”列入人类非物质文化遗产代表作名录。</p></div></li>
       <li class="reveal l"><span class="dot"></span><div class="tl-card"><time>2011 年</time><h3>世界记忆名录</h3><p>《黄帝内经》与《本草纲目》入选联合国教科文组织《世界记忆名录》。</p></div></li>
-      <li class="reveal r"><span class="dot"></span><div class="tl-card"><time>今日</time><h3>久真堂</h3><p><span class="ph" title="占位：请替换为真实信息">【待补充：久真堂 / 黄药师 传承谱系与代际】</span></p></div></li>
+      <li class="reveal r"><span class="dot"></span><div class="tl-card"><time>清代</time><h3>黄元御 · 创立久真堂</h3><p>远宗明代五大医家，以“中气为本、一气周流”为核心。</p></div></li>
+      <li class="reveal l"><span class="dot"></span><div class="tl-card"><time>今日</time><h3>久真堂 · 黄忠强</h3><p>黄氏同宗后裔黄忠强接续传承，双脉并承：泉派中医与新九针。<span class="ph" title="占位：请替换为真实信息">【待补充：传承谱系与代际】</span></p></div></li>
     </ol></div></section>
   <section class="sec alt" id="wellness"><div class="wrap"><div class="sec-head reveal"><span class="kicker">Health Preservation</span><h2>养生文化</h2><i class="rule"></i><p class="intro">《素问》云：“法于阴阳，和于术数，食饮有节，起居有常，不妄作劳。”养生不在一时，在于日常。</p></div>
     <div class="cards4">
@@ -208,7 +218,7 @@
     <p class="principle reveal">绿色非药物疗法优先：运动 · 正骨 · 金针</p>
     <p class="slot reveal"><span class="ph" title="占位：请替换为真实信息">【真实案例待授权补充】</span></p>
     <div class="disclaimer reveal">以上内容为诊疗思路与中医文化介绍，不构成医疗建议，亦不代表疗效承诺。具体诊疗请面诊；针刺、正骨等操作须由合格医师完成。</div></div></section>
-  <section class="sec alt" id="courses"><div class="wrap"><div class="sec-head reveal"><span class="kicker">Courses</span><h2>课程 · 久真堂传习</h2><i class="rule"></i><p class="intro">黄药师在久真堂授课：从桩功、呼吸入门，到太极技法与九针理论。课程以文化传习与系统学习为主，不替代面诊。</p></div>
+  <section class="sec alt" id="courses"><div class="wrap"><div class="sec-head reveal"><span class="kicker">Courses</span><h2>课程 · 广仁堂传习</h2><i class="rule"></i><p class="intro">黄药师在广仁堂授课：从桩功、呼吸入门，到太极技法与九针理论。课程以文化传习与系统学习为主，不替代面诊。</p></div>
     <div class="cards4 courses">
       <article class="kcard reveal" style="--d:0ms"><div class="kthumb" aria-hidden="true"><span class="play"></span></div>
         <span class="lvl">根基 · 站桩</span><h3>桩功</h3><p>从幼年随父站桩而来的功课。立身中正，松静自然，是武与医共同的根。</p>
@@ -227,14 +237,14 @@
         <ul><li>《灵枢》九针源流</li><li>新九针理论</li><li>十二经络视频课</li></ul><p class="sched"><span class="ph" title="占位：请替换为真实信息">【课时 / 排期待定】</span></p>
         <div class="kfoot"><span class="price"><span class="ph" title="占位：请替换为真实信息">【价格待定】</span></span><a class="btn sm ghost" href="#contact">咨询课程</a></div></article>
     </div></div></section>
-  <section class="sec" id="contact"><div class="wrap"><div class="sec-head reveal"><span class="kicker">Contact</span><h2>联系 · 久真堂</h2><i class="rule"></i><p class="intro">欢迎来访交流。授课与诊疗请提前预约，面诊为准。</p></div>
+  <section class="sec" id="contact"><div class="wrap"><div class="sec-head reveal"><span class="kicker">Contact</span><h2>联系 · 广仁堂</h2><i class="rule"></i><p class="intro">欢迎来访交流。授课与诊疗请提前预约，面诊为准。</p></div>
     <div class="contact-grid reveal">
-      <dl class="crow"><div><dt>机构</dt><dd><button class="copy" type="button" data-v="北京久真堂中医研究院">北京久真堂中医研究院</button></dd></div><div><dt>地址</dt><dd><button class="copy" type="button" data-v="【地址待填】"><span class="ph" title="占位：请替换为真实信息">【地址待填】</span></button></dd></div><div><dt>电话</dt><dd><button class="copy" type="button" data-v="【电话待填】"><span class="ph" title="占位：请替换为真实信息">【电话待填】</span></button></dd></div><div><dt>邮箱</dt><dd><button class="copy" type="button" data-v="hzq61882@gmail.com">hzq61882@gmail.com</button></dd></div><div><dt>微信</dt><dd><button class="copy" type="button" data-v="【微信号待填】"><span class="ph" title="占位：请替换为真实信息">【微信号待填】</span></button></dd></div><div><dt>公众号</dt><dd><button class="copy" type="button" data-v="【公众号名称待填】"><span class="ph" title="占位：请替换为真实信息">【公众号名称待填】</span></button></dd></div><div><dt>时间</dt><dd><button class="copy" type="button" data-v="【营业 / 门诊时间待填】"><span class="ph" title="占位：请替换为真实信息">【营业 / 门诊时间待填】</span></button></dd></div></dl>
+      <dl class="crow"><div><dt>机构</dt><dd><button class="copy" type="button" data-v="北京广仁堂中医研究院">北京广仁堂中医研究院</button></dd></div><div><dt>地址</dt><dd><button class="copy" type="button" data-v="【地址待填】"><span class="ph" title="占位：请替换为真实信息">【地址待填】</span></button></dd></div><div><dt>电话</dt><dd><button class="copy" type="button" data-v="【电话待填】"><span class="ph" title="占位：请替换为真实信息">【电话待填】</span></button></dd></div><div><dt>邮箱</dt><dd><button class="copy" type="button" data-v="hzq61882@gmail.com">hzq61882@gmail.com</button></dd></div><div><dt>微信</dt><dd><button class="copy" type="button" data-v="【微信号待填】"><span class="ph" title="占位：请替换为真实信息">【微信号待填】</span></button></dd></div><div><dt>公众号</dt><dd><button class="copy" type="button" data-v="【公众号名称待填】"><span class="ph" title="占位：请替换为真实信息">【公众号名称待填】</span></button></dd></div><div><dt>时间</dt><dd><button class="copy" type="button" data-v="【营业 / 门诊时间待填】"><span class="ph" title="占位：请替换为真实信息">【营业 / 门诊时间待填】</span></button></dd></div></dl>
       <div class="qr"><div class="qr-box"><img src="assets/logo.svg" alt=""></div><p><span class="ph" title="占位：请替换为真实信息">【二维码待放置】</span></p><small>点击信息可复制</small></div>
     </div></div></section>
 </main>
 
-<footer class="footer" id="footer"><div class="wrap"><img src="assets/logo.svg" alt="" width="44" height="44"><p class="fline">久真堂 · Jiu Zhen Tang —— 金针济世 · 返本归元</p><p class="fdis">本网站内容为中医文化科普，不构成医疗建议。具体诊疗请面诊，针刺等操作须由合格医师完成。</p><p class="fcopy">© 久真堂 <span class="ph" title="占位：请替换为真实信息">【待补充：备案号（如需）】</span></p></div></footer>
+<footer class="footer" id="footer"><div class="wrap"><img src="assets/logo.svg" alt="" width="44" height="44"><p class="fline">久真堂 · Jiu Zhen Tang —— 金针济世 · 返本归元</p><p class="fdis">本网站内容为中医文化科普，不构成医疗建议。具体诊疗请面诊，针刺等操作须由合格医师完成。</p><p class="fcopy">© 久真堂 · 广仁堂 <span class="ph" title="占位：请替换为真实信息">【待补充：备案号（如需）】</span></p></div></footer>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
   <div class="modal-card"><button class="modal-x" type="button" aria-label="关闭">×</button><div id="modalBody"></div></div>
 </div>

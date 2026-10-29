@@ -13,13 +13,23 @@ const t = s => esc(s).replace(/【([^】]*)】/g, '<span class="ph" title="占�
 const head = c => `<div class="sec-head reveal"><span class="kicker">${t(c.kicker)}</span><h2>${t(c.title)}</h2><i class="rule"></i>${c.intro ? `<p class="intro">${t(c.intro)}</p>` : ""}</div>`;
 const B = CONTENT.brand, H = CONTENT.hero;
 
+const G = CONTENT.tang;
+const tang = `<div class="wrap">${head(G)}
+    <p class="tang-core reveal">${t(G.core)}</p>
+    <p class="tang-text reveal">${t(G.text)}</p>
+    <div class="veins">${G.veins.map((v, i) => `
+      <article class="vein reveal" style="--d:${i * 100}ms"><span class="vno">${t(v.n)}</span><small>双脉 · 其${t(v.n)}</small><h3>${t(v.t)}</h3><p>${t(v.d)}</p><ul>${v.tags.map(x => `<li>${t(x)}</li>`).join("")}</ul></article>`).join("")}
+    </div>
+    <div class="fuse reveal"><span class="fuse-k">融</span>${G.fuse.map(x => `<b>${t(x)}</b>`).join('<i aria-hidden="true">·</i>')}</div>
+    <p class="tang-motto reveal">${t(G.motto)}</p>
+  </div>`;
+
 const A = CONTENT.about;
 const about = `<div class="wrap">${head(A)}
     <div class="about-grid">
-      <div class="portrait reveal" aria-hidden="true">
-        <img src="assets/logo.svg" alt="">
+      <div class="portrait reveal">
+        <img class="photo" src="assets/portrait.jpg" alt="黄忠强（德明）" width="640" height="640" loading="lazy">
         <span class="seal">${t(A.motto)}</span>
-        <p class="portrait-ph"><span class="ph">【待放置：黄药师 肖像照片】</span></p>
       </div>
       <div class="about-txt reveal">
         <p class="lead">${t(A.lead)}</p>
@@ -96,8 +106,8 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(B.name)} · ${esc(B.en)} — 金针济世 · 返本归元</title>
-<meta name="description" content="${esc(B.name)}：中医针灸文化品牌。金针传承、武医同源、养生文化。">
-<meta name="theme-color" content="#6B3A8C">
+<meta name="description" content="${esc(B.name)}：由清代医家黄元御创立，以“中气为本、一气周流”为核心；当代黄忠强接续传承，双脉并承泉派中医与新九针。">
+<meta name="theme-color" content="#0b0d10">
 <!-- 有 JS 时才启用“渐显”隐藏；1.5 秒内 main.js 未运行则自动全部显示 -->
 <script>(function(d){d.classList.add("js");setTimeout(function(){if(!d.classList.contains("ready")){d.classList.remove("js");}},1500);})(document.documentElement);</script>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -136,9 +146,10 @@ ${fs.readFileSync(path.join(__dirname, "hero-art.svg"), "utf8").trimEnd()}
         <a class="btn ghost" href="#contact">${t(H.cta2)}</a>
       </div>
     </div>
-    <a class="scroll-hint" href="#about" aria-label="向下滚动"><span></span></a>
+    <a class="scroll-hint" href="#tang" aria-label="向下滚动"><span></span></a>
   </section>
 
+  <section class="sec alt" id="tang">${tang}</section>
   <section class="sec" id="about">${about}</section>
   <section class="sec alt" id="needles">${needles}</section>
   <section class="sec" id="lineage">${lineage}</section>

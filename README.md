@@ -4,7 +4,7 @@
 
 ## 文件
 - `index.html` — 完整页面（所有栏目文字已预先写入；首屏金针 + 雪岭线描 SVG 动画）。由 `tools/build.js` 生成
-- `css/style.css` — 全部样式（正紫底 + 金色点缀，响应式）
+- `css/style.css` — 全部样式（深色底 + 金色点缀，响应式）
 - `js/main.js` — **只负责交互**（手机菜单、导航高亮、滚动渐显、九针弹窗、复制、飘雪），不再生成文字
 - `tools/content.js` — **全站文案唯一编辑处**（`CONTENT` 对象）
 - `tools/build.js` — 根据 `tools/content.js` 重新生成 `index.html`
@@ -37,7 +37,6 @@
 
 ## 待填占位（页面上显示为虚线金框，搜索 `【` 即可全部找到）
 关于（tools/content.js → CONTENT.about）
-- 【待放置：黄药师 肖像照片】（替换 `.portrait` 中的标志图）
 - 【待补充：传承谱系图（可选）】
 
 传承（CONTENT.lineage）
@@ -50,7 +49,7 @@
 - 每门各一处 【课时 / 排期待定】
 - 每门各一处 【价格待定】
 
-联系 · 北京久真堂中医研究院（CONTENT.contact）
+联系 · 北京广仁堂中医研究院（CONTENT.contact）
 - 【地址待填】【电话待填】【微信号待填】【公众号名称待填】【营业 / 门诊时间待填】
 - 【二维码待放置】（替换 `.qr-box` 中的图片）
 
