@@ -67,3 +67,9 @@
 - `app/xueguang/` 是应用的静态镜像（HTML + CSS + JS，含本地化的 ts-fsrs），运行时不访问 workbuddy 或任何境外 CDN。
 - **更新应用**：在站点根目录运行 `bash tools/mirror-xueguang.sh`（会重新抓取 workbuddy 上的最新版本并覆盖 `app/xueguang/`；脚本发现外部依赖会报错退出），检查 `git diff` 后提交推送。
 - 学习进度保存在浏览器 localStorage，按域名区分：workbuddy 链接上的旧进度不会自动带过来（可在应用设置里“导出 / 导入进度”）。
+
+## 2026-11 改版预览（redesign-preview 分支）
+
+视觉方向「宣纸 · 墨色 · 守中」：宣纸底 + 墨色 + 朱砂点睛；首屏为一笔成圆的墨色圆相（一气周流），金针落于圆心（中气为本）；竖排书法「久真堂」。
+动效使用本地托管的 GSAP 3.12.5 + ScrollTrigger（`js/vendor/`），尊重 `prefers-reduced-motion`，无 JS 时内容完整可见。
+内容仍由 `tools/content.js` 生成（未改动），修改后执行 `node tools/build.js`。设计说明见 `docs/redesign-spec.md`。
