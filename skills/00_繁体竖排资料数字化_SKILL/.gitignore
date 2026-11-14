@@ -1,0 +1,14 @@
+# 依赖
+node_modules/
+
+# 临时 / 中间产物
+*.orig
+tmp_*
+.work/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 转录中间稿（按需保留，不进库）
+ocr/
